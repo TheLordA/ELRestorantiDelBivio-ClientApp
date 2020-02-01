@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:flexWrap="wrap"
+    app:alignItems="stretch"
+    app:alignContent="stretch"
+    app:justifyContent="center"
+    android:background="@android:color/white"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/button_color"
+        app:layout_alignSelf="flex_start"
+        android:padding="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/mansalva"
+            android:layout_gravity="center"
+            android:textSize="30sp"
+
+        />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/icon"
+        android:src="@drawable/app_icon"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </ImageView>
+
+    <Button
+        android:id="@+id/btn_sign_in"
+        android:text="Sign In"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/mansalva"
+        app:layout_alignSelf="flex_start"
+        android:layout_margin="8dp"
+        android:background="@drawable/border_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+</com.google.android.flexbox.FlexboxLayout>

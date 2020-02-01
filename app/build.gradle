@@ -1,0 +1,105 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.project.clientapp"
+        minSdkVersion 22
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    //Firebase Authentification
+    implementation 'com.google.firebase:firebase-auth:19.1.0'
+    // FirebaseUI for Firebase Auth
+    implementation 'com.firebaseui:firebase-ui-auth:6.0.2'
+    //FireBase Messaging
+    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    //Flexbox
+    implementation 'com.google.android:flexbox:1.1.1'
+    //ButterKnife
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment:2.1.0'
+    implementation 'androidx.navigation:navigation-ui:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+    //Dexter
+    implementation 'com.karumi:dexter:6.0.0'
+    //Retrofit+RxJAVA
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation "io.reactivex.rxjava2:rxjava:2.2.9"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
+    //Spots Dialog
+    implementation 'com.github.d-max:spots-dialog:1.1@aar'
+    //Paper
+    implementation 'io.paperdb:paperdb:2.6'
+    //slider
+    implementation 'com.ss.bannerslider:bannerslider:2.0.0'
+    //EventBus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    //Notification Badge
+    implementation 'com.nex3z:notification-badge:1.0.2'
+    //Room +RxJava
+    annotationProcessor 'androidx.room:room-compiler:2.2.1'
+    implementation 'androidx.room:room-rxjava2:2.2.1'
+    //Expansion Panel
+    implementation 'com.github.florent37:expansionpanel:1.2.2'
+    //DateCalender
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
+    //BrainTree DROP-UI
+    implementation 'com.braintreepayments.api:drop-in:4.4.1'
+    //Location
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+    //KenBurns Effect
+    implementation 'com.flaviofaria:kenburnsview:1.0.7'
+
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //resolve a conflict dependency issue
+    components.all {
+        allVariants {
+            withDependencies { deps ->
+                deps.each { dep ->
+                    if (dep.group == 'net.minidev' && dep.name == 'json-smart') {
+                        dep.version {
+                            prefer "2.3"
+                        }
+                        dep.because "resolving dependencies issue"
+                    }
+                }
+            }
+        }
+    }
+}
